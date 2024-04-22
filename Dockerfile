@@ -1,8 +1,4 @@
-ARG ARCH=amd64  # Default architecture
-ARG PYTHON_VERSION=3.12
-
-FROM --platform=${ARCH} python:${PYTHON_VERSION}-${ARCH}-slim  # Use base image based on build argument
-
+FROM python:3.12.1-slim-bookworm
 
 WORKDIR /app
 

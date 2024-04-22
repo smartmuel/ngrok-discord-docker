@@ -5,12 +5,16 @@ jobs:
   build_and_push:
     name: Build and push for multiple architectures
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [amd64, arm64]  # List of architectures
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+
+      - name: "Set up QEMU"
+        uses: "docker/setup-qemu-action@v3"
+
+      - name: "Set up Docker Buildx"
+        uses: "docker/setup-buildx-action@v3"
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -19,10 +23,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: "docker/build-push-action@v5"
         with:
           context: .
           push: true
-          tags: samuelgibhin/ngrok-discord:${{ matrix.arch }}
-          build-args: |  # Pass build argument with current architecture
-            ARCH=${{ matrix.arch }}
+          platforms: "linux/amd64,linux/arm64"
+          tags: |
+            samuelgibhin/ngrok-discord:latest
