@@ -1,0 +1,15 @@
+version: "3"
+services:
+    ngrok-discord:
+        container_name: ngrok-discord
+        network_mode: host
+        stdin_open: true
+        tty: true
+        image: samuelgibhin/ngrok-discord:latest
+        restart: unless-stopped
+        environment:
+          - ngrok_api=<ngrok_api> #replace with your ngrok api
+          - webhook_url=<webhook_url> #replace with your webhook url
+          - NGROK_AUTHTOKEN=<ngrok_authtoken> #replace with your ngrok authtoken
+          - PORT=25565 #optional
+          - PROTOCOL=tcp #optional

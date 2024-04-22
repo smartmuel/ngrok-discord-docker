@@ -2,9 +2,12 @@ name: Build and Push Docker image to Docker Hub
 
 on: push
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  build_and_push:
+    name: Build and push for multiple architectures
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [amd64, arm64]  # List of architectures
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -20,4 +23,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: samuelgibhin/ngrok-discord:latest
+          tags: samuelgibhin/ngrok-discord:${{ matrix.arch }}
+          build-args: |  # Pass build argument with current architecture
+            ARCH=${{ matrix.arch }}
