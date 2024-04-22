@@ -1,6 +1,10 @@
 name: Build and Push Docker image to Docker Hub
 
-on: push
+on:
+  push:
+    tags:
+      - "v*"
+
 jobs:
   build_and_push:
     name: Build and push for multiple architectures
@@ -30,3 +34,4 @@ jobs:
           platforms: "linux/amd64,linux/arm64"
           tags: |
             samuelgibhin/ngrok-discord:latest
+            samuelgibhin/ngrok-discord:{{ github.ref_name }}
