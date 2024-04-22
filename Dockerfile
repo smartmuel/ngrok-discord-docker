@@ -1,5 +1,6 @@
-# Base image for the container
-FROM python:3.12
+ARG ARCH=amd64  # Default architecture
+
+FROM python:${ARCH}-slim  # Use base image based on build argument
 
 WORKDIR /app
 
