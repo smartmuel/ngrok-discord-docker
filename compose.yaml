@@ -11,5 +11,7 @@ services:
           - ngrok_api=<ngrok_api> #replace with your ngrok api
           - webhook_url=<webhook_url> #replace with your webhook url
           - NGROK_AUTHTOKEN=<ngrok_authtoken> #replace with your ngrok authtoken
-          - PORT=25565 #optional
-          - PROTOCOL=tcp #optional
+          - PORT=25565 #replace with your port
+          - PROTOCOL=tcp #replace with your protocol
+          - server_name=Server #optional
+          - massage_title=New Server Name #optional

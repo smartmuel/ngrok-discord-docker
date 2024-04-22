@@ -44,14 +44,17 @@ def update_webhook(tunnel: str) -> None:
     if webhook_url is None:
         raise Exception("webhook_url not set")
 
+    massage_title = os.environ.get('massage_title', "New Server Name")
+    server_name = os.environ.get('server_name', "Server")
+
     embed = {
         "description": f'{tunnel.split("//")[1]}',
-        "title": "New Server Name"
+        "title": massage_title
     }
     
     data = {
         "content": "message content",
-        "username": "Server",
+        "username": server_name,
         "embeds": [
             embed
         ],
