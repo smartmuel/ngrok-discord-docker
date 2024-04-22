@@ -3,7 +3,7 @@ name: Build and Push Docker image to Docker Hub
 on:
   push:
     tags:
-      - v*
+      - "v*"
 
 jobs:
   build_and_push:
