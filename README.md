@@ -4,7 +4,7 @@ A Docker image for [ngrok](https://ngrok.com) service to expose a local docker e
 
 # A Little About The Project
 
-This project first started to allow the use of minecraft server easy use of [ngrok](https://ngrok.com) free tier.
+This project first started for hosted minecraft server easy use of [ngrok](https://ngrok.com) free tier.
 If you have suggestions for improvements please feel free to open an issue.
 
 ## Usage
